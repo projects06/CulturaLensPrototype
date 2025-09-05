@@ -10,6 +10,35 @@
 </style>
 </head>
 <body>
+  <div id="prototypeOverlay" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  z-index: 5000;
+">
+  <h2>⚠️ Prototype Notice</h2>
+  <p style="max-width:300px; margin:10px 0;">
+    This is a <b>mini MVP prototype</b>. Functionality is limited.<br>
+    Only the <b>Golden Temple AR</b> works for now.
+  </p>
+  <button id="closePrototypeBtn" style="
+    padding: 10px 20px;
+    font-size: 16px;
+    background:#FFD700;
+    color:#111;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+  ">Got it!</button>
+</div>
 <header>
   <div class="wrap row">
     <h1>🛕 CulturaLens <span class="tag">Mini MVP</span></h1>
@@ -97,9 +126,15 @@
   </section>
 </main>
 
-<footer>Built by DevNull Tracers • Punjab Focus • Prototype Only</footer>
+<footer>Built for Hackathon • Punjab Focus • Prototype Only</footer>
 
 <script>
+
+const protoOverlay = document.getElementById('prototypeOverlay');
+const closeBtn = document.getElementById('closePrototypeBtn');
+closeBtn.addEventListener('click', () => {
+  protoOverlay.style.display = 'none';
+});
 
 document.querySelectorAll("button").forEach((t) => {
     t.addEventListener("click", () => {
