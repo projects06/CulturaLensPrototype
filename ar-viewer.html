@@ -104,17 +104,18 @@
 
     <script>
       const overlay = document.getElementById("overlay");
-      const asset = document.getElementById("goldenTemple");
-      asset.addEventListener("loaded", () => {
-        overlay.classList.add("fade-out");
-        setTimeout(() => { overlay.style.display = "none"; }, 1000);
-      });
+  const temple = document.getElementById("temple");
 
-      setTimeout(() => {
-        if (overlay.style.display !== "none") {
-          overlay.innerHTML = "<p>⚠️ Model took too long to load. Please refresh the page.</p>";
-        }
-      }, 30000);
+  temple.addEventListener("model-loaded", () => {
+    overlay.classList.add("fade-out");
+    setTimeout(() => { overlay.style.display = "none"; }, 1000);
+  });
+
+  setTimeout(() => {
+    if (overlay.style.display !== "none") {
+      overlay.innerHTML = "<p>⚠️ Model took too long to load. Please refresh the page.</p>";
+    }
+  }, 30000);
     </script>
   </body>
 </html>
