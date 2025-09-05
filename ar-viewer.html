@@ -10,35 +10,25 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
     <style>
-      body { margin: 0; overflow: hidden; }
+      body { margin: 0; overflow: hidden; font-family: system-ui, sans-serif; }
       .back-button {
         position: fixed;
-        top: 20px;
-        left: 20px;
-        padding: 10px 15px;
-        background: rgba(0,0,0,0.6);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        z-index: 1000;
+        top: 20px; left: 20px;
+        padding: 10px 15px; background: rgba(0,0,0,0.6);
+        color: white; border: none; border-radius: 8px;
+        font-size: 16px; cursor: pointer; z-index: 3000;
       }
     </style>
   </head>
   <body>
-    <!-- Back button -->
     <button class="back-button" onclick="window.history.back()">← Back</button>
 
-    <!-- AR.js Scene -->
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      
-      <!-- Preload model -->
       <a-assets timeout="300000">
-        <a-asset-item id="goldenTemple" src="./assets/golden-temple.glb"></a-asset-item>
+        <!-- Google Drive GLB -->
+        <a-asset-item id="goldenTemple" src="https://drive.google.com/uc?export=download&id=1RLEOSvELFHNYQS7M0N15tr1vgckO9PdU"></a-asset-item>
       </a-assets>
 
-      <!-- Marker + Model -->
       <a-marker preset="hiro">
         <a-entity
           id="temple"
@@ -48,29 +38,14 @@
           rotation="90 180 0">
         </a-entity>
       </a-marker>
-      
-      <!-- Lights -->
+
+      <!-- Lighting -->
       <a-entity light="type: ambient; intensity: 1; color: #ffffff"></a-entity>
       <a-entity light="type: directional; intensity: 1; color: #ffffff" position="1 1 1"></a-entity>
 
       <!-- Camera -->
       <a-entity camera="fov: 100"></a-entity>
     </a-scene>
-
-    <!-- Tint materials gold but keep details -->
-    <script>
-      document.querySelector('#temple').addEventListener('model-loaded', e => {
-        const model = e.detail.model; 
-        model.traverse(node => {
-          if (node.isMesh && node.material) {
-            // Instead of replacing, tint existing material
-            node.material.color.set(0xFFD700); // gold tint
-            node.material.metalness = 0.8;     // make it shiny
-            node.material.roughness = 0.3;     // not too matte
-          }
-        });
-      });
-    </script>
   </body>
 </html>
 
