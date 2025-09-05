@@ -101,22 +101,6 @@
       <a-entity light="type: directional; intensity: 1; color: #ffffff" position="1 1 1"></a-entity>
       <a-entity camera="fov: 100"></a-entity>
     </a-scene>
-
-    <script>
-      const overlay = document.getElementById("overlay");
-  const temple = document.getElementById("temple");
-
-  temple.addEventListener("model-loaded", () => {
-    overlay.classList.add("fade-out");
-    setTimeout(() => { overlay.style.display = "none"; }, 1000);
-  });
-
-  setTimeout(() => {
-    if (overlay.style.display !== "none") {
-      overlay.innerHTML = "<p>⚠️ Model took too long to load. Please refresh the page.</p>";
-    }
-  }, 30000);
-    </script>
   </body>
 </html>
 
